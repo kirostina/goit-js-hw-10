@@ -20,7 +20,7 @@ function renderSelect (breeds){
         return `<option value='${breed.reference_image_id}'>${breed.name}</option>`;
     })
     .join('');
-    ref.select.insertAdjacentHTML('beforeend', markup);
+    refs.select.insertAdjacentHTML('beforeend', markup);
     new SlimSelect({
         select: '#single', //Ініціалізація бібліотеки
     });
@@ -29,7 +29,7 @@ function renderSelect (breeds){
 //Функція, що отримує дані та на їх основі створює розмітку випадаючого списку
 
 (function fetchBreedsRender () {
-    ref.loader.classList.remove('unvisible')
+    refs.loader.classList.remove('unvisible')
     fetchBreeds()
     .then(breeds => renderSelect (breeds)) //Функція, що генерує розмітку випадаючого списку
     .catch(error => {
@@ -39,8 +39,8 @@ function renderSelect (breeds){
         );
     })
     .finally(() => {
-        ref.loader.classList.add('unvisible');
-        ref.select.classList.remove('unvisible');
+        refs.loader.classList.add('unvisible');
+        refs.select.classList.remove('unvisible');
     });
 })();
 //Функція, що генерує розмітку опису обраної породи кота (картинка та текст)
@@ -49,16 +49,16 @@ function renderDesc (breed) {
     const descript = `<h2 class="cat-info-desc-title">${breed.breeds[0].name}</h2>
     <p class="cat-info-desc-desc">${breed.breeds[0].description}</p>
     <p class="cat-info-desc-temp"><b>Temperament:</b> ${breed.breeds[0].temperament}</p>`;
-    ref.catPic.insertAdjacentHTML('beforeend', picture);
-    ref.catDesc.insertAdjacentHTML('beforeend', descript);
+    refs.catPic.insertAdjacentHTML('beforeend', picture);
+    refs.catDesc.insertAdjacentHTML('beforeend', descript);
 };
 //Функція, яка виконується 
 //при виборі породи кота у списку (подія change на селекті)
 
 function onChangeSelect(e) {
-    ref.loader.classList.remove('unvisible');
-    ref.catPic.innerHTML = '';
-    ref.catDesc.innerHTML = '';
+    refs.loader.classList.remove('unvisible');
+    refs.catPic.innerHTML = '';
+    refs.catDesc.innerHTML = '';
      const breedId = e.target.value;
      console.log('breedId: ', breedId);
      fetchCatByBreed (breedId)
@@ -69,5 +69,5 @@ function onChangeSelect(e) {
             'Oops! Something went wrong! Try reloading the page!'    
         );
      })
-     .finally(() => ref.loader.classList.add ('unvisible'));
+     .finally(() => refs.loader.classList.add ('unvisible'));
 }
