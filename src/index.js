@@ -11,7 +11,7 @@ const refs = {
     error: document.querySelector('.error'),
     catInfo: document.querySelector('.cat-info'),
     catPic: document.querySelector('.cat-info-pic'),
-    catDesk: document.querySelector('.cat-info-desk')
+    catDesc: document.querySelector('.cat-info-desc')
 }
 refs.select.addEventListener('change', changeSelect);
 
@@ -29,7 +29,7 @@ function renderSelect (breeds){
 
 //Функція, що отримує дані та на їх основі створює розмітку випадаючого списку
 
-(function fetchBreedsRender () {
+function fetchBreedsRender () {
     refs.loader.classList.remove('unvisible')
     fetchBreeds()
     .then(breeds => renderSelect (breeds)) //Функція, що генерує розмітку випадаючого списку
@@ -43,7 +43,7 @@ function renderSelect (breeds){
         refs.loader.classList.add('unvisible');
         refs.select.classList.remove('unvisible');
     });
-})();
+};
 //Функція, що генерує розмітку опису обраної породи кота (картинка та текст)
 function renderDesc (breed) {
     const picture = `<img class="cat-picture" src="${breed.url}" alt="${breed.id}">`;
@@ -56,7 +56,7 @@ function renderDesc (breed) {
 //Функція, яка виконується 
 //при виборі породи кота у списку (подія change на селекті)
 
-function onChangeSelect(e) {
+function changeSelect(e) {
     refs.loader.classList.remove('unvisible');
     refs.catPic.innerHTML = '';
     refs.catDesc.innerHTML = '';
