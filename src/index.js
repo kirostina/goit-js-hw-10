@@ -1,5 +1,6 @@
 import axios from "axios";
 import { fetchBreeds, fetchCatByBreed } from "./cat-api";
+axios.defaults.headers.common["x-api-key"] = "live_OwnHPJtyqZnhFGb9ke9rq5pe8KhPwuVuEnhtwXN0SzTtL91cpay6oQR0xNlIcWUE";
 import SlimSelect from 'slim-select'
 import 'slim-select/dist/slimselect.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
