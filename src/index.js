@@ -56,7 +56,7 @@ function renderDesc (breed) {
 //Функція, яка виконується 
 //при виборі породи кота у списку (подія change на селекті)
 
-function changeSelect(e) {
+function changeSelect (e) {
     refs.loader.classList.remove('unvisible');
     refs.catPic.innerHTML = '';
     refs.catDesc.innerHTML = '';
