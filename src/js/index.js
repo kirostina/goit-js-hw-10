@@ -28,10 +28,13 @@ function renderSelect (breeds){
 };
 
 
-(function fetchBreedsRender () {
+(function fetchBreedsRender() {
     refs.loader.classList.remove('unvisible')
     fetchBreeds()
-    .then(breeds => renderSelect (breeds)) 
+        .then(breeds => {
+            renderSelect(breeds)
+            refs.select.classList.add('unvisible');
+}) 
     .catch(error => {
         console.log(error);
         Notify.failure(
