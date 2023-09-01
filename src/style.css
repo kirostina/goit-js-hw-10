@@ -78,6 +78,9 @@
         height: 18px
     }
 }
+.unvisible {
+    display: none;
+}
 
 body {
     background-color: #b3d5ed;
